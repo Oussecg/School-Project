@@ -1,0 +1,110 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+:root{
+    --main: red;
+    --secondary: white;
+    --background: black;
+}
+
+body{
+    color: var(--secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    padding: 20px;
+    background-color: var(--background);
+}
+
+.main{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+
+}
+
+.inputs-container{
+    padding: 20px;
+    border: 2px solid var(--secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 40px;
+}
+
+.inputs-titles{
+    color: var(--main);
+    font-size: bold;
+    font-size: 17px;
+}
+
+.inputs{
+    width: 200px;
+    text-align: center;
+    border: none;
+    outline: none;
+    color: var(--main);
+    padding: 4px 10px;
+    transition: 0.6s all;
+}
+
+.inputs:focus{
+    margin-left: 13px;
+    scale: 1.1;
+    padding: 6px 15px;
+    outline: 2px solid var(--main);
+    box-shadow: 3px 3px 10px var(--main), -3px -3px 10px var(--main);
+}
+
+.buttons{
+    position: relative;
+    border: 1px solid var(--secondary);
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: 0.6s all;
+}
+
+.buttons::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--main);
+    z-index: -2;
+}
+
+.isHovered{
+    color: var(--main);
+    background-color: var(--secondary);
+    border: 2px solid var(--main);
+    scale: 1.2;
+    box-shadow: 0 0 30px var(--main);
+}
+
+.isClicked{
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+    box-shadow: 0 0 30px var(--secondary);
+}
+
+.isClicked::before{
+    animation: widthAnimation 1s;
+}
+
+@keyframes widthAnimation {
+    0%{
+        width: 0%;
+    }
+
+    100%{
+        width: 100%
+    }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Page</title>
+        <link rel="stylesheet" href="styles/admin/style.css" />
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="inputs-container">
+                <label>
+                    <label for="username" class="inputs-titles">
+                        Username:
+                    </label>
+                    <input
+                        type="text"
+                        class="inputs"
+                        id="username"
+                        placeholder="Write Your Username"
+                    />
+                </label>
+
+                <label>
+                    <label for="password" class="inputs-titles">
+                        Password:
+                    </label>
+                    <input
+                        type="text"
+                        class="inputs"
+                        id="password"
+                        placeholder="Write Your Password"
+                    />
+                </label>
+
+                <a class="buttons" id="logIn">Log In</a>
+            </div>
+            <div class="areNew">
+                <p>
+                    If you are new you can
+                    <a class="youWannaCreateAcount">Create New Acount</a>
+                </p>
+            </div>
+            <div class="result"></div>
+        </div>
+        <script src="scripts/admin/script.js"></script>
+    </body>
+</html>

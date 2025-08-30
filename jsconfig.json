@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "checkJs": true,
+        "lib": ["ES6", "DOM"],
+        "target": "ES6"
+    },
+    "typeAcquisition": {
+        "include": ["jquery"]
+    }
+}
