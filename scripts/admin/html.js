@@ -70,5 +70,25 @@ const createAcounthtml = `
 
 <a class="buttons" id="createAcount">Create Acount</a>`;
 
-const tableRequestConfirmHtml =
-    ``;
+const tableRequestConfirmHtml = `
+<table class="requestTable">
+<thead>
+    <tr>
+        <th class="requestTitle" id="requestIdTitle">Request Id:</th>
+        <th class="requestTitle" id="requestTypeTitle">Request Type:</th>
+        <th class="requestTitle id="requestFirstNameTitle>First Name</th>
+        <th class="requestTitle" id="requestLastName">Last Name:</th>
+        <th class="requestTitle>Confirm Request:</th>
+    </tr>
+</thead>
+<tbody></tbody>
+<tfoot>
+    <a id="confirmRequest">
+        Submit
+    </a>
+    <a id="deleteRequest">
+        Delete
+    </a>
+</tfoot>
+</table>
+<div class="result"></div>`;

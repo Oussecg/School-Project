@@ -5,6 +5,56 @@ class Buttons {
         this.onMouseEnter = this.onMouseEnter.bind(this);
         this.onMouseLeave = this.onMouseLeave.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.showRequestTable = this.showRequestTable.bind(this);
+        this.tableRequestHtml = tableRequestConfirmHtml;
+        this.checkSession = this.checkSession.bind(this);
+    }
+
+    checkSession() {
+        $.ajax({
+            type: "post",
+            url: "http://localhost/projects/project/php/admin/checkSession.php",
+            success: (data) => {
+                if (data.indexOf("success") !== -1) {
+                    this.showRequestTable(10);
+                }
+            },
+            error: () => {
+                alert("Check Session has failed there and error in your xmlHttpRequest");
+            }
+        });
+    }
+
+    showRequestTable(value = null) {
+        if (value === null) {
+            value = 2000;
+        }
+        setTimeout(() => {
+            $(".inputs-container").hide(1500);
+            $(".areNew").hide(1500);
+            $(".result")
+                .html(
+                    `<img src="http://localhost/projects/project/images/hourglass.gif" alt="Wait a second" class="wait-gif">`
+                )
+                .removeClass("falseResult")
+                .removeClass("trueResult");
+            setTimeout(() => {
+                $(".main").html(this.tableRequestHtml);
+                $.ajax({
+                    type: "post",
+                    url: "http://localhost/projects/project/php/admin/request.php",
+                    success: (data) => {
+                        if (data.indexOf("failure") !== -1) {
+                            $(".result")
+                                .addClass("falseResult")
+                                .html("There is an error :/");
+                        } else {
+                            $(".requestTable tbody").html(data);
+                        }
+                    },
+                });
+            }, value);
+        }, value);
     }
 
     configurateButton() {
@@ -52,7 +102,10 @@ class LogInButton extends Buttons {
     }
 
     logIn() {
-        $(".result").html("").removeClass("falseResult").removeClass("trueResult");
+        $(".result")
+            .html("")
+            .removeClass("falseResult")
+            .removeClass("trueResult");
         const username = $("#username").val();
         const password = $("#password").val();
         setTimeout(() => {
@@ -65,8 +118,8 @@ class LogInButton extends Buttons {
                         if (data.indexOf("success") !== -1) {
                             $(".result")
                                 .addClass("trueResult")
-                                .html("You log in successfuly :)")
-                                .css("color", "green");
+                                .html("You log in successfuly :)");
+                            this.showRequestTable();
                         } else {
                             $(".result")
                                 .addClass("falseResult")
@@ -87,7 +140,6 @@ class LogInButton extends Buttons {
                     .html(`Fill the inputs fields !`);
             }
         }, 1300);
-
     }
 }
 
@@ -120,6 +172,7 @@ class createAcountButton extends Buttons {
                             $(".result")
                                 .addClass("trueResult")
                                 .html("You log in successfuly :)");
+                            this.showRequestTable();
                         } else {
                             $(".result")
                                 .addClass("falseResult")
@@ -213,3 +266,4 @@ const wannaLogIn = new changeModeButtons(
 );
 
 const logIn = new LogInButton();
+logIn.checkSession();
