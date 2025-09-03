@@ -1,10 +1,8 @@
 import { Buttons } from "../classes/button.js";
-import { createAcounthtml, logInhtml, tableRequestConfirmHtml } from "./html.js"
+import {  } from "./html.js"
 
 class Operations {
     constructor() {
-        this.showRequestTable = this.showRequestTable.bind(this);
-        this.tableRequestHtml = tableRequestConfirmHtml;
         this.checkSession = this.checkSession.bind(this);
     }
 
@@ -39,7 +37,7 @@ class Operations {
                 .removeClass("falseResult")
                 .removeClass("trueResult");
             setTimeout(() => {
-                $(".main").html(this.tableRequestHtml);
+                $(".main").html();
                 $.ajax({
                     type: "post",
                     url: "http://localhost/projects/project/php/admin/request.php",
@@ -204,7 +202,7 @@ class changeModeButtons {
                 );
                 const wannaLogIn = new changeModeButtons(
                     "youWannaLogIn",
-                    logInhtml
+                    ""
                 );
                 const createAcount = new createAcountButton();
             } else {
@@ -218,7 +216,7 @@ class changeModeButtons {
                 );
                 const wannaCreateAcount = new changeModeButtons(
                     "youWannaCreateAcount",
-                    createAcounthtml
+                    ""
                 );
                 const logIn = new LogInButton();
             }
@@ -234,7 +232,7 @@ $(window).on("resize", () => {
 
 const wannaLogIn = new changeModeButtons(
     "youWannaCreateAcount",
-    createAcounthtml
+    ""
 );
 
 const logIn = new LogInButton();

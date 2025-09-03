@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+}
+
+:root {
+    --background: #ffffff;
+    --main: #474554;
+    --secondary: #aca7cb;
+    --less-used: #ff00e9;
+    --rare-used: #ff00d5;
+    --success: green;
+    --failure: red;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    padding: 20px;
+    background-color: var(--background);
+}
+
+.title {
+    margin-bottom: 15px;
+    color: var(--rare-used);
+}
+
+.main {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.inputs-container {
+    padding: 50px;
+    border: 2px solid var(--rare-used);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 40px;
+}
+
+.inputs-container-Exeption {
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+.input-container-Exeption {
+    max-width: 300px;
+    width: 100%;
+    display: block;
+}
+
+.inputs-titles {
+    color: var(--less-used);
+    font-size: bold;
+    font-size: 17px;
+}
+
+.inputs {
+    width: 200px;
+    text-align: center;
+    border: 1px solid var(--secondary);
+    outline: none;
+    color: var(--main);
+    padding: 4px 10px;
+    transition: 0.6s all;
+}
+
+.inputs:focus {
+    border: none;
+    margin-left: 13px;
+    padding: 6px 15px;
+    outline: 2px solid var(--secondary);
+    box-shadow: 5px 3px 10px var(--secondary), -5px -3px 10px var(--secondary);
+}
+
+.inputs-Exeption {
+    width: 100%;
+}
+
+.inputs-Exeption:focus {
+    margin: 5px 0;
+}
+
+.buttons {
+    height: 30px;
+    position: relative;
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: 0.6s all;
+}
+
+.buttons::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--rare-used);
+    z-index: -1;
+}
+
+.isHovered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--rare-used);
+    border-color: var(--rare-used);
+    scale: 1.2;
+    box-shadow: 1px 1px 4px var(--less-used), -1px -1px 4px var(--less-used);
+}
+
+.isClicked {
+    color: var(--background);
+    box-shadow: 1px 1px 4px var(--rare-used), -1px -1px 4px var(--rare-used);
+}
+
+.isClicked::before {
+    animation: widthAnimation 1s;
+}
+
+@keyframes widthAnimation {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.areNew {
+    margin-top: 10px;
+    color: var(--secondary);
+}
+
+.youWannaCreateAcount,
+.youWannaLogIn {
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--main);
+}
+
+.falseResult {
+    border-radius: 20px;
+    color: var(--failure);
+    margin-top: 20px;
+    text-decoration: underline;
+    padding: 20px;
+    box-shadow: 2px 2px 10px var(--failure), -2px -2px 10px var(--failure);
+}
+
+.trueResult {
+    border-radius: 20px;
+    color: var(--success);
+    margin-top: 20px;
+    text-decoration: underline;
+    padding: 20px;
+    box-shadow: 2px 2px 10px var(--success), -2px -2px 10px var(--success);
+}
+
+.wait-gif{
+    width: 200px;
+}

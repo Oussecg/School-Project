@@ -1,4 +1,4 @@
-const logInhtml = `
+export const logInhtml = `
 <label class="input-container">
     <label for="username" class="inputs-titles">
         Username:
@@ -23,7 +23,7 @@ const logInhtml = `
 
 <a class="buttons" id="logIn">Log In</a>`;
 
-const createAcounthtml = `
+export const createAcounthtml = `
 <label class="input-container">
     <label for="firstName" class="inputs-titles">
         First Name:
@@ -70,7 +70,7 @@ const createAcounthtml = `
 
 <a class="buttons" id="createAcount">Create Acount</a>`;
 
-const tableRequestConfirmHtml = `
+export const tableRequestConfirmHtml = `
 <table class="requestTable">
 <thead>
     <tr>
