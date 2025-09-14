@@ -124,17 +124,17 @@ class LogInButton extends Buttons {
     }
 }
 
-class createAcountButton extends Buttons {
+class createAccountButton extends Buttons {
     constructor() {
         super();
         this.operation = new Operations();
-        this.id = "createAcount";
-        this.createAcount = this.createAcount.bind(this);
+        this.id = "createAccount";
+        this.createAccount = this.createAccount.bind(this);
         this.configurateButton();
-        $(`#${this.id}`).on("click", this.createAcount);
+        $(`#${this.id}`).on("click", this.createAccount);
     }
 
-    createAcount() {
+    createAccount() {
         $(".result")
             .html("")
             .removeClass("falseResult")
@@ -147,7 +147,7 @@ class createAcountButton extends Buttons {
             if (this.operation.checkInputs([firstName, lastName, username, password])) {
                 $.ajax({
                     type: "post",
-                    url: "http://localhost/projects/project/php/admin/createAcount.php",
+                    url: "http://localhost/projects/project/php/admin/createAccount.php",
                     data: `firstname=${firstName}&lastname=${lastName}&username=${username}&password=${password}`,
                     success: (data) => {
                         if (data.indexOf("success") !== -1) {
@@ -165,7 +165,7 @@ class createAcountButton extends Buttons {
                         $(".result")
                             .addClass("falseResult")
                             .html(
-                                `There is an error xmlHtppRequest has failed :/`
+                                `The Request has failed :/`
                             );
                     },
                 });
@@ -192,7 +192,7 @@ class changeModeButtons {
             .removeClass("trueResult");
         $(`.${Class}`).on("click", () => {
             $(".inputs-container").html(html);
-            if (Class === "youWannaCreateAcount") {
+            if (Class === "youWannaCreateAccount") {
                 this.operation.checkResolution(1500);
                 $(window).on("resize", () => {
                     this.operation.checkResolution(1500);
@@ -204,7 +204,7 @@ class changeModeButtons {
                     "youWannaLogIn",
                     ""
                 );
-                const createAcount = new createAcountButton();
+                const createAccount = new createAccountButton();
             } else {
                 this.operation.checkResolution(815);
                 $(window).on("resize", () => {
@@ -212,10 +212,10 @@ class changeModeButtons {
                 });
 
                 $(".areNew").html(
-                    `If you are new you can <a class="youWannaCreateAcount">Create Acount</a>`
+                    `If you are new you can <a class="youWannaCreateAccount">Create Acount</a>`
                 );
-                const wannaCreateAcount = new changeModeButtons(
-                    "youWannaCreateAcount",
+                const wannaCreateAccount = new changeModeButtons(
+                    "youWannaCreateAccount",
                     ""
                 );
                 const logIn = new LogInButton();
@@ -231,7 +231,7 @@ $(window).on("resize", () => {
 });
 
 const wannaLogIn = new changeModeButtons(
-    "youWannaCreateAcount",
+    "youWannaCreateAccount",
     ""
 );
 

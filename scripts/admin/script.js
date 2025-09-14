@@ -1,83 +1,12 @@
 import { Buttons } from "../classes/button.js";
 import { createAcounthtml, logInhtml, tableRequestConfirmHtml } from "./html.js"
+import { Operations } from "../classes/operation.js"
 
-class Operations {
-    constructor() {
-        this.showRequestTable = this.showRequestTable.bind(this);
-        this.tableRequestHtml = tableRequestConfirmHtml;
-        this.checkSession = this.checkSession.bind(this);
-    }
-
-    checkSession() {
-        $.ajax({
-            type: "post",
-            url: "http://localhost/projects/project/php/admin/checkSession.php",
-            success: (data) => {
-                if (data.indexOf("success") !== -1) {
-                    this.showRequestTable(10);
-                }
-            },
-            error: () => {
-                alert(
-                    "Check Session has failed there and error in your xmlHttpRequest"
-                );
-            },
-        });
-    }
-
-    showRequestTable(value = null) {
-        if (value === null) {
-            value = 2000;
-        }
-        setTimeout(() => {
-            $(".inputs-container").hide(1500);
-            $(".areNew").hide(1500);
-            $(".result")
-                .html(
-                    `<img src="http://localhost/projects/project/images/hourglass.gif" alt="Wait a second" class="wait-gif">`
-                )
-                .removeClass("falseResult")
-                .removeClass("trueResult");
-            setTimeout(() => {
-                $(".main").html(this.tableRequestHtml);
-                $.ajax({
-                    type: "post",
-                    url: "http://localhost/projects/project/php/admin/request.php",
-                    success: (data) => {
-                        if (data.indexOf("failure") !== -1) {
-                            $(".result")
-                                .addClass("falseResult")
-                                .html("There is an error :/");
-                        } else {
-                            $(".requestTable tbody").html(data);
-                        }
-                    },
-                });
-            }, value);
-        }, value);
-    }
-
-    checkInputs(inputsList) {
-        return !inputsList.some((value) => value === "");
-    }
-
-    checkResolution(widthValue) {
-        if (window.innerWidth < widthValue) {
-            $(".inputs-container").addClass("inputs-container-Exeption");
-            $(".input-container").addClass("input-container-Exeption");
-            $(".inputs").addClass("inputs-Exeption");
-        } else {
-            $(".inputs-container").removeClass("inputs-container-Exeption");
-            $(".input-container").removeClass("input-container-Exeption");
-            $(".inputs").removeClass("inputs-Exeption");
-        }
-    }
-}
 
 class LogInButton extends Buttons {
     constructor() {
         super();
-        this.operation = new Operations()
+        this.operation = new Operations(tableRequestConfirmHtml)
         this.id = "logIn";
         this.logIn = this.logIn.bind(this);
         this.configurateButton();
@@ -129,7 +58,7 @@ class LogInButton extends Buttons {
 class createAcountButton extends Buttons {
     constructor() {
         super();
-        this.operation = new Operations();
+        this.operation = new Operations(tableRequestConfirmHtml);
         this.id = "createAcount";
         this.createAcount = this.createAcount.bind(this);
         this.configurateButton();
@@ -185,7 +114,7 @@ class changeModeButtons {
         this.id = id;
         this.html = html;
         this.setButton(this.id, this.html);
-        this.operation = new Operations();
+        this.operation = new Operations(tableRequestConfirmHtml);
     }
     setButton(Class, html) {
         $(".result")
@@ -226,7 +155,7 @@ class changeModeButtons {
     }
 }
 
-const operation = new Operations();
+const operation = new Operations(tableRequestConfirmHtml);
 operation.checkResolution(815);
 $(window).on("resize", () => {
     operation.checkResolution(815);
