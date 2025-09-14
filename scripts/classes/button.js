@@ -5,8 +5,10 @@ export class Buttons {
         this.onMouseEnter = this.onMouseEnter.bind(this);
         this.onMouseLeave = this.onMouseLeave.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.configureButton = this.configureButton.bind(this)
     }
-    configurateButton() {
+
+    configureButton() {
         $(`.${this.class}`)
             .on("click", this.onClick)
             .on("mouseenter", this.onMouseEnter)
@@ -32,7 +34,7 @@ export class Buttons {
             $(event.currentTarget)
                 .removeClass("isHovered")
                 .removeClass("isClicked");
-            this.configurateButton();
+            this.configureButton();
         }, 1300);
     }
 }

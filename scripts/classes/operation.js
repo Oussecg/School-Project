@@ -57,16 +57,4 @@ export class Operations {
     checkInputs(inputsList) {
         return !inputsList.some((value) => value === "");
     }
-
-    checkResolution(widthValue) {
-        if (window.innerWidth < widthValue) {
-            $(".inputs-container").addClass("inputs-container-Exeption");
-            $(".input-container").addClass("input-container-Exeption");
-            $(".inputs").addClass("inputs-Exeption");
-        } else {
-            $(".inputs-container").removeClass("inputs-container-Exeption");
-            $(".input-container").removeClass("input-container-Exeption");
-            $(".inputs").removeClass("inputs-Exeption");
-        }
-    }
 }

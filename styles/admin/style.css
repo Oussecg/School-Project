@@ -45,7 +45,7 @@ body {
     column-gap: 40px;
 }
 
-.inputs-container-Exeption {
+.inputs-container-Exception {
     flex-direction: column;
     row-gap: 30px;
 }
@@ -56,7 +56,7 @@ body {
     height: 30px;
 }
 
-.input-container-Exeption {
+.input-container-Exception {
     max-width: 300px;
     width: 100%;
     display: block;
@@ -86,11 +86,11 @@ body {
     box-shadow: 5px 3px 10px var(--secondary), -5px -3px 10px var(--secondary);
 }
 
-.inputs-Exeption {
+.inputs-Exception {
     width: 100%;
 }
 
-.inputs-Exeption:focus {
+.inputs-Exception:focus {
     margin: 5px 0;
 }
 
@@ -150,7 +150,7 @@ body {
     color: var(--secondary);
 }
 
-.youWannaCreateAcount,
+.youWannaCreateAccount,
 .youWannaLogIn {
     cursor: pointer;
     text-decoration: underline;
