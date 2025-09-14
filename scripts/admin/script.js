@@ -7,7 +7,7 @@ import {
 import { Operations } from "../classes/operation.js"
 import { Resolution } from "../classes/resolution.js";
 
-
+// todo: we have to display a message when you clicked on create account or log in and the inputs is null
 class LogInButton extends Buttons {
     constructor() {
         super();
@@ -159,11 +159,14 @@ const resolution = new Resolution;
 resolution.checkResolution(815);
 resolution.checkResolutionResize(815);
 
-const wannaLogIn = new changeModeButtons("youWannaCreateAccount",createAccountHtml);
-const wannaCreateAccount = new changeModeButtons("youWannaLogIn", logInHtml);
+const wannaLogIn = new changeModeButtons("youWannaLogIn", createAccountHtml);
+const wannaCreateAccount = new changeModeButtons(
+    "youWannaCreateAccount",
+    logInHtml
+);
 
 const logIn = new LogInButton();
 const createAccount = new createAccountButton();
 
-wannaLogIn.setButton()
-createAccount.configureButton()
+wannaCreateAccount.setButton()
+logIn.configureButton()
