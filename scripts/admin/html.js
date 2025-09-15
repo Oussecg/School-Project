@@ -71,6 +71,7 @@ export const createAccountHtml = `
 <a class="buttons" id="createAccount">Create Account</a>`;
 
 export const tableRequestConfirmHtml = `
+<a id="disconnect">Disconnect</a>
 <table class="requestTable">
 <thead>
     <tr>

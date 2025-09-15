@@ -6,20 +6,20 @@ $cnc = $cncObj->connect();
 
 if (isset($cnc)){
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
-        $firstname = filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_SPECIAL_CHARS);
-        $lastname = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_SPECIAL_CHARS);
+        $firstName = filter_input(INPUT_POST, "firstName", FILTER_SANITIZE_SPECIAL_CHARS);
+        $lastName = filter_input(INPUT_POST, "lastName", FILTER_SANITIZE_SPECIAL_CHARS);
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
         $hashPass = password_hash($password, PASSWORD_DEFAULT);
 
-        $query = "SELECT adminFirstName, adminLastName FROM admins WHERE adminFirstName = '$firstname' AND adminLastName = '$lastname';";
+        $query = "SELECT adminFirstName, adminLastName FROM admins WHERE adminFirstName = '$firstName' AND adminLastName = '$lastName';";
         try {
             $data = $cnc->query($query);
             if ($data->rowCount() > 0){
                 $query = "UPDATE admins
                 set adminUsername = '$username',
                 adminPassword = '$hashPass'
-                WHERE adminFirstName = '$firstname' AND adminLastName = '$lastname'";
+                WHERE adminFirstName = '$firstName' AND adminLastName = '$lastName'";
                 try {
                     $cnc->query($query);
                     $_SESSION["username"] = $username;

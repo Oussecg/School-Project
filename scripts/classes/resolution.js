@@ -12,6 +12,7 @@ export class Resolution {
     }
 
     checkResolutionResize(widthValue) {
+        $(window).off("resize");
         $(window).on("resize", () => {
             this.checkResolution(widthValue);
         });

@@ -183,4 +183,11 @@ body {
     border: 1px;
 }
 
+#disconnect{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--main);
+}
+
 

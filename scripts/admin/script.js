@@ -1,17 +1,18 @@
 import { Buttons } from "../classes/button.js";
+import { CheckSession } from "../classes/checkSession.js";
+import { Operations } from "../classes/operation.js";
+import { Resolution } from "../classes/resolution.js";
 import {
     createAccountHtml,
     logInHtml,
     tableRequestConfirmHtml,
 } from "./html.js";
-import { Operations } from "../classes/operation.js"
-import { Resolution } from "../classes/resolution.js";
 
 // todo: we have to display a message when you clicked on create account or log in and the inputs is null
 class LogInButton extends Buttons {
     constructor() {
         super();
-        this.operation = new Operations(tableRequestConfirmHtml)
+        this.operation = operations;
         this.id = "logIn";
         this.logIn = this.logIn.bind(this);
         $(`#${this.id}`).on("click", this.logIn);
@@ -79,11 +80,18 @@ class createAccountButton extends Buttons {
         const username = $("#username").val();
         const password = $("#password").val();
         setTimeout(() => {
-            if (this.operation.checkInputs([firstName, lastName, username, password])) {
+            if (
+                this.operation.checkInputs([
+                    firstName,
+                    lastName,
+                    username,
+                    password,
+                ])
+            ) {
                 $.ajax({
                     type: "post",
                     url: "http://localhost/projects/project/php/admin/createAccount.php",
-                    data: `firstname=${firstName}&lastname=${lastName}&username=${username}&password=${password}`,
+                    data: `firstName=${firstName}&lastName=${lastName}&username=${username}&password=${password}`,
                     success: (data) => {
                         if (data.indexOf("success") !== -1) {
                             $(".result")
@@ -117,8 +125,8 @@ class changeModeButtons {
     constructor(Class, html) {
         this.class = Class;
         this.html = html;
-        this.operation = new Operations(tableRequestConfirmHtml);
-        this.setButton = this.setButton.bind(this)
+        this.operation = operations;
+        this.setButton = this.setButton.bind(this);
     }
 
     setButton() {
@@ -132,13 +140,13 @@ class changeModeButtons {
         $(`.${this.class}`).on("click", () => {
             $(".inputs-container").html(this.html);
             if (this.class === "youWannaCreateAccount") {
-                resolution.checkResolution(815);
-                resolution.checkResolutionResize(815);
+                resolution.checkResolution(1500);
+                resolution.checkResolutionResize(1500);
                 $(".areNew").html(
                     `If you already have an account go to <a class="youWannaLogIn">Log In</a>`
                 );
-                createAccount.configureButton()
-                wannaLogIn.setButton()
+                createAccount.configureButton();
+                wannaLogIn.setButton();
             } else {
                 // check resolution
                 resolution.checkResolution(815);
@@ -148,25 +156,32 @@ class changeModeButtons {
                     `If you are new you can <a class="youWannaCreateAccount">Create Account</a>`
                 );
                 // configure buttons for functionality
-                logIn.configureButton()
-                wannaCreateAccount.setButton()
+                logIn.configureButton();
+                wannaCreateAccount.setButton();
             }
         });
     }
 }
 
-const resolution = new Resolution;
+// this 3 lines is for
+const resolution = new Resolution();
 resolution.checkResolution(815);
 resolution.checkResolutionResize(815);
 
-const wannaLogIn = new changeModeButtons("youWannaLogIn", createAccountHtml);
+// load operations
+const operations = new Operations(tableRequestConfirmHtml);
+
+const checkSession = new CheckSession(operations);
+checkSession.checkSession();
+
+const wannaLogIn = new changeModeButtons("youWannaLogIn", logInHtml);
 const wannaCreateAccount = new changeModeButtons(
     "youWannaCreateAccount",
-    logInHtml
+    createAccountHtml
 );
 
 const logIn = new LogInButton();
 const createAccount = new createAccountButton();
 
-wannaCreateAccount.setButton()
-logIn.configureButton()
+wannaCreateAccount.setButton();
+logIn.configureButton();

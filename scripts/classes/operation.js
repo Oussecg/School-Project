@@ -2,30 +2,13 @@ export class Operations {
     constructor(success_html) {
         this.showRequestTable = this.showRequestTable.bind(this);
         this.tableRequestHtml = success_html;
-        this.checkSession = this.checkSession.bind(this);
-    }
-
-    checkSession() {
-        $.ajax({
-            type: "post",
-            url: "http://localhost/projects/project/php/admin/checkSession.php",
-            success: (data) => {
-                if (data.indexOf("success") !== -1) {
-                    this.showRequestTable(10);
-                }
-            },
-            error: () => {
-                alert(
-                    "Check Session has failed there and error in your xmlHttpRequest"
-                );
-            },
-        });
     }
 
     showRequestTable(value = null) {
         if (value === null) {
             value = 2000;
         }
+        
         setTimeout(() => {
             $(".inputs-container").hide(1500);
             $(".areNew").hide(1500);
