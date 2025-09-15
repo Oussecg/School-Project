@@ -8,7 +8,7 @@ export class Operations {
         if (value === null) {
             value = 2000;
         }
-        
+
         setTimeout(() => {
             $(".inputs-container").hide(1500);
             $(".areNew").hide(1500);

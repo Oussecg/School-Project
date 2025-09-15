@@ -72,24 +72,31 @@ export const createAccountHtml = `
 
 export const tableRequestConfirmHtml = `
 <a id="disconnect">Disconnect</a>
-<table class="requestTable">
+<table class="requestTable" border="1px">
 <thead>
     <tr>
-        <th class="requestTitle" id="requestIdTitle">Request Id:</th>
-        <th class="requestTitle" id="requestTypeTitle">Request Type:</th>
-        <th class="requestTitle id="requestFirstNameTitle>First Name</th>
-        <th class="requestTitle" id="requestLastName">Last Name:</th>
-        <th class="requestTitle>Confirm Request:</th>
+        <th class="requestTitle" id="requestIdTitle">Request Id</th>
+        <th class="requestTitle" id="requestTypeTitle">Request Type</th>
+        <th class="requestTitle" id="requestFirstNameTitle">First Name</th>
+        <th class="requestTitle" id="requestLastName">Last Name</th>
+        <th class="requestTitle">Confirm Request</th>
     </tr>
 </thead>
 <tbody></tbody>
 <tfoot>
-    <a id="confirmRequest">
-        Submit
-    </a>
+    <tr>
+    <td colspan="3">
+        <a id="confirmRequest">
+            Submit
+        </a>
+    </td>
+    <td colspan="3">
     <a id="deleteRequest">
         Delete
     </a>
+    </td>
+    </tr>
+
 </tfoot>
 </table>
 <div class="result"></div>`;

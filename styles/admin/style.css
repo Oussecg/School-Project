@@ -179,8 +179,12 @@ body {
     width: 200px;
 }
 
-.request-table{
-    border: 1px;
+.requestTable{
+    width: 100%;
+}
+
+.requestTitle{
+    color: var(--rare-used);
 }
 
 #disconnect{
@@ -188,6 +192,7 @@ body {
     top: 0;
     left: 0;
     color: var(--main);
+    cursor: pointer;
 }
 
 
